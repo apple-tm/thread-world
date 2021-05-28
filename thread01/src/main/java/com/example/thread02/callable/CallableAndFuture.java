@@ -15,7 +15,7 @@ public class CallableAndFuture {
 
     public static void main(String[] args) throws Exception {
         ExecutorService pool = Executors.newFixedThreadPool(2);
-        Future<Integer> f1 = pool.submit(new MyCallable(100));
+        Future<Integer> f1 = pool.submit(new MyCallable(100000));
         Future<Integer> f2 = pool.submit(new MyCallable(10));
         System.out.println(f1.get());
         System.out.println(f2.get());
@@ -39,6 +39,7 @@ class MyCallable implements Callable<Integer> {
         for (int i=0; i<number; i++) {
             sum += i;
         }
+        System.out.println(Thread.currentThread().getName()+"计算出:"+sum);
         return sum;
     }
 }

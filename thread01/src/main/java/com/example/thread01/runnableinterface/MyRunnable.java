@@ -13,6 +13,11 @@ public class MyRunnable implements Runnable {
 //        for (int i=0; i<200; i++) {
 //            System.out.println(i);
 //        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         // thread 可以修改自己的线程名
         System.out.println(Thread.currentThread().getName());
     }
@@ -24,8 +29,8 @@ public class MyRunnable implements Runnable {
         Thread thread2 = new Thread(runnable, "top2");
         // 该线程相对与主线程异步，该线程的生命周期就是 run 方法的生命周期，而主线程会一直向下执行
         // 主线程启动一个线程后继续向下执行不会执行其他线程的任务，此所谓多线程
-        thread1.start();
-        thread2.setDaemon(true);
+//        thread1.start();
+//        thread2.setDaemon(true); 设置为守护线程会出现 top2 线程名不会打印，因为 main 执行完守护线程会自动结束
         thread2.start();
         System.out.println(Thread.currentThread().getName());
     }

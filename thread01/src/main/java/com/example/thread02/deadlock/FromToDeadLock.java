@@ -16,6 +16,13 @@ public class FromToDeadLock {
                       int money) {
         // 锁定汇款账户
         synchronized (fromAccount) {
+            System.out.println(fromAccount+"客户端锁被用");
+            try {
+                // 线程休眠1000，让客户端锁被获得
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             // 锁定收款账户
             synchronized (toAccount) {
                 fromAccount.debit(money);

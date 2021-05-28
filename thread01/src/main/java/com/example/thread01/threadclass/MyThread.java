@@ -17,6 +17,6 @@ public class MyThread extends Thread {
         Thread thread2 = new MyThread();
         thread1.start();
         thread2.start();
-        // 测试结果：两个线程交替执行 run 方法中的代码 todo
+        // 测试结果：两个线程交替执行 run 方法中的代码
     }
 }

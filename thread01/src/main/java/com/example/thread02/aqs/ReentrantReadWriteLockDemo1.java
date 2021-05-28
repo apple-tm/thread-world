@@ -16,9 +16,10 @@ public class ReentrantReadWriteLockDemo1 {
         ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLock.writeLock();
         // 读锁
         ReentrantReadWriteLock.ReadLock readLock =  reentrantReadWriteLock.readLock();
+        writeLock.lock();
+        readLock.lock();
         try {
-            writeLock.lock();
-            readLock.lock();
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

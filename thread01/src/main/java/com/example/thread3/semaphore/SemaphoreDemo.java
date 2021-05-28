@@ -6,6 +6,7 @@ import java.util.concurrent.Semaphore;
  * Semaphore
  * 1.小店一次只能容纳5个顾客挑选购买，超过5个就需要排队啦~~~
  * 2.semaphore.acquire(); semaphore.release(); 10 个信号量代表最多十个线程并发
+ * 3.信号量满会阻塞直到其他信号量被释放
  */
 public class SemaphoreDemo {
 

@@ -11,13 +11,29 @@ public class TryLock {
         new Thread(
                 ()->{
                     if (lock1.tryLock()) {
-                        System.out.println("获得锁");
+                        System.out.println(Thread.currentThread().getName()+"获得锁");
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     } else {
-                        System.out.println("没有获得锁");
+                        System.out.println(Thread.currentThread().getName()+"没有获得锁");
                         return;
                     }
                 }
-        ).start();
+        , "t1").start();
+
+        new Thread(
+                ()->{
+                    if (lock1.tryLock()) {
+                        System.out.println(Thread.currentThread().getName()+"获得锁");
+                    } else {
+                        System.out.println(Thread.currentThread().getName()+"没有获得锁");
+                        return;
+                    }
+                }
+        ,"t2").start();
 
     }
 }

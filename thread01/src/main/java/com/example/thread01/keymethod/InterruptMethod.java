@@ -32,10 +32,10 @@ public class InterruptMethod {
         t1.start();
         try {
             System.out.println("没有调用 interrupt 执行 10ms 的打印随机数");
-            Thread.sleep(10);
+            Thread.sleep(1);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        t1.interrupt();
+//        t1.interrupt();
     }
 }
